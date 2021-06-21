@@ -17,10 +17,6 @@
         }
 
         body {
-            background: url(images/maya-pyramid-vector-illustration-ancient-mexico-stone-aztec-temple-green-jungle-landscape-liana-old-civilization-ruin-travel-220163925.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
             width: 100vw;
             height: 100vh;
 
@@ -28,13 +24,26 @@
             margin: 0;
         }
 
+        #body {
+            background: url(images/maya-pyramid-vector-illustration-ancient-mexico-stone-aztec-temple-green-jungle-landscape-liana-old-civilization-ruin-travel-220163925.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
         #container {
             position: relative;
             width: 50vw;
             height: 90vh;
             border: .5vw solid rgb(255 180 61);
-
-            margin: 0 auto;
+            z-index: 10;
+            margin: 1.5vw auto;
             padding: 0;
             background-color: rgb(219, 255, 162);
         }
@@ -110,17 +119,48 @@
             left: 0vw;
 
         }
+
+        #score_borde {
+            background-color: white;
+            width: 20vw;
+            /* height: 10vw; */
+
+            position: absolute;
+            top: 2vw;
+            left: 78vw;
+        }
+
+        #score_borde li {
+            list-style: none;
+            padding: 1vw 2vw;
+            font-size: 2vw;
+        }
+
+
+        #score {
+
+            display: block;
+            font-size: 1.8vw;
+            padding: 1vw 2vw;
+        }
     </style>
 </head>
 
 <body>
     <input id="put" type="text" autofocus>
-    <div id="game_over_audio"></div>
-    <div id="eating_audio"></div>
-    <div id="container">
-        <div id="main">
-            <div id="box1" class="snac"></div>
-            <div id="ball"></div>
+    <div id="body">
+        <div id="game_over_audio"></div>
+        <div id="eating_audio"></div>
+        <div id="container">
+            <div id="main">
+                <div id="box1" class="snac"></div>
+                <div id="ball"></div>
+            </div>
+        </div>
+        <div id="score_borde">
+            <li>Score</li>
+            <span id="score">1000</span>
+
         </div>
     </div>
 </body>
@@ -132,6 +172,9 @@
     </script>
 
 <script>
+    $('body').on("swiperright", function () {
+        console.log("swiperright")
+    })
     $("body").click(function () {
         $('#put').focus()
     })
@@ -214,6 +257,22 @@
 </script>
 
 <script>
+</script>
+
+<script>
+
+    function myFunction(event) {
+        var x = event.touches[0].clientX;
+        var y = event.touches[0].clientY;
+
+    }
+    function red() {
+        document.getElementById("container").background = 'red'
+    }
+
+
+
+
     document.getElementById('eating_audio').innerHTML = `<audio autoplay muted>   <source src="sounds/Chewing-popcorn-epic-big-crunch-www.fesliyanstudios.com.mp3" type="audio/mpeg">  </audio> `
     document.getElementById('game_over_audio').innerHTML = `<audio autoplay muted >           <source src="sounds/gameoversound.wav" type="audio/mpeg">      </audio>`
 
@@ -228,11 +287,16 @@
     let b = 3 / 2
     let length = 20 / 2
     let changes = 10 / 2
-    let time = 100
+    let time = 60
     let eat = 0
     let hold = 0
     let maxwidth
     let maxheight
+
+    // Start Score Board
+    let score = (length - 10) * 10
+
+    // End Score Board
 
     var mainheight
     maxheight = $('#container').height()
@@ -249,7 +313,7 @@
         }
         i = i + 1;
         mainheight = $('#main').css({ height: i + "vw" })
-        console.log("123")
+        //console.log("123")
         heigth()
     }
 
@@ -575,7 +639,7 @@
 
     function horizonatal() {
 
-        randomh = parseInt(Math.random() * 10000000) % 49.5
+        randomh = parseInt(Math.random() * 10000000) % 48.5
         //console.log("hori"+parseInt(Math.random()*1000)%98)
         var i = queue.front
         var t
@@ -944,6 +1008,11 @@
               }
           }*/
 
+
+
+        //Start The Score Board
+        $('#score').html((length - 10) * 10)
+        //Start The Score Board
 
 
         if (stop1 == 0) {
