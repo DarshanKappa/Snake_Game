@@ -146,7 +146,7 @@
     </style>
 </head>
 
-<body>
+<body ontouchstart="startfun(event)" ontouchend="endfun(event)">
     <input id="put" type="text" autofocus>
     <div id="body">
         <div id="game_over_audio"></div>
@@ -171,14 +171,7 @@
     crossorigin="anonymous">
     </script>
 
-<script>
-    $('body').on("swiperright", function () {
-        console.log("swiperright")
-    })
-    $("body").click(function () {
-        $('#put').focus()
-    })
-</script>
+
 
 <script>
     class Snac {
@@ -257,9 +250,10 @@
 </script>
 
 <script>
-</script>
+</script> 
 
 <script>
+    
 
     function myFunction(event) {
         var x = event.touches[0].clientX;
@@ -1153,6 +1147,15 @@
     //     $('#main').children().last().css({height: (queue.array[queue.front + 1]).height + "vw"})
     // }
 
+</script>
+
+<script>
+    function startfun(event){
+        $('#container').css({background: 'red'})
+    }
+    function endfun(event){
+        $('#container').css({background: 'blue'})
+    }
 </script>
 
 </html>
