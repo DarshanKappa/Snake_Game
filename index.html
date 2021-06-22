@@ -146,7 +146,7 @@
     </style>
 </head>
 
-<body ontouchstart="startfun(event)" ontouchend="endfun(event)">
+<body ontouchmove="touchesmove(event)" ontouchstart="startfun()" ontouchend="endfun()">
     <input id="put" type="text" autofocus>
     <div id="body">
         <div id="game_over_audio"></div>
@@ -1165,6 +1165,8 @@
 </script>
 
 <script>
+    let xmain
+    let ymain
     let x1
     let y1
     let x2
@@ -1172,15 +1174,24 @@
     let dx
     let dy
 
-    function startfun(event) {
-        $('#container').css({ background: 'white' })
-        x1 = event.touches[0].clientX;
-        y1 = event.touches[0].clientY;
+    function touchesmove(event){
+        xmain = event.touches[0].clientX;
+        ymain = event.touches[0].clientY;
+
     }
-    function endfun(event) {
+
+    function startfun() {
+        $('#container').css({ background: 'white' })
+        x1 = xmain;
+        y1 = ymain;
+
+    }
+    
+    function endfun() {
         $('#container').css({ background: 'black' })
-        x2 = event.touches[0].clientX;
-        y2 = event.touches[0].clientY;
+        x2 = xmain;
+        y2 = ymain;
+
 
         dx = x2 - x1;
         dy = y2 - y1;
