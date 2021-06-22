@@ -250,10 +250,13 @@
 </script>
 
 <script>
-</script> 
+    $('body').click(function (){
+        $('#put').focus()
+    })
+</script>
 
 <script>
-    
+
 
     function myFunction(event) {
         var x = event.touches[0].clientX;
@@ -333,115 +336,127 @@
         setTimeout(snacstartrun, 5)
     });
 
+
     $('#put').keydown(function (event) {
         if (event.keyCode == 37) {
-
-            if ((queue.array[queue.rear]).side == "d") {
-                var snac3 = new Snac(((queue.array[queue.rear]).top + (queue.array[queue.rear]).height - b), (queue.array[queue.rear]).left - 3 / 2, b + 3 / 2, b, "l", 2)
-                queue.insert(snac3)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-
-            if ((queue.array[queue.rear]).side == "u") {
-                var snac3 = new Snac((queue.array[queue.rear]).top, (queue.array[queue.rear]).left - 3 / 2, b + 3 / 2, b, "l", 2)
-                queue.insert(snac3)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-            snacout()
+            leftsidekey()
         }
-    })
-
-    $('#put').keydown(function (event) {
         if (event.keyCode == 38) {
-
-            if ((queue.array[queue.rear]).side == "l") {
-                var snac4 = new Snac((queue.array[queue.rear]).top - 3 / 2, (queue.array[queue.rear]).left, b, b + 3 / 2, "u", 2)
-                queue.insert(snac4)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-
-            if ((queue.array[queue.rear]).side == "r") {
-                var snac4 = new Snac((queue.array[queue.rear]).top - 3 / 2, ((queue.array[queue.rear]).left + (queue.array[queue.rear]).width - b), b, b + 3 / 2, "u", 2)
-                queue.insert(snac4)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-            snacout()
-
+            upsidekey()
         }
-    })
-    $('#put').keydown(function (event) {
         if (event.keyCode == 39) {
-
-            if ((queue.array[queue.rear]).side == "u") {
-                var snac1 = new Snac((queue.array[queue.rear]).top, (queue.array[queue.rear]).left, b + 3 / 2, b, "r", 2)
-                queue.insert(snac1)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-
-            if ((queue.array[queue.rear]).side == "d") {
-                var snac1 = new Snac(((queue.array[queue.rear]).top + (queue.array[queue.rear].height - b)), (queue.array[queue.rear]).left, b + 3 / 2, b, "r", 2)
-                queue.insert(snac1)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-            snacout()
+            rightsidekey()
         }
-    })
-    $('#put').keydown(function (event) {
         if (event.keyCode == 40) {
-
-            if ((queue.array[queue.rear]).side == "r") {
-                var snac2 = new Snac((queue.array[queue.rear]).top, ((queue.array[queue.rear]).left + (queue.array[queue.rear]).width - b), b, b + 3 / 2, "d", 2)
-                queue.insert(snac2)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-            if ((queue.array[queue.rear]).side == "l") {
-                var snac2 = new Snac((queue.array[queue.rear]).top, (queue.array[queue.rear]).left, b, b + 3 / 2, "d", 2)
-                queue.insert(snac2)
-
-                $('#main').append('<div class="snac"></div>')
-
-                sidechanges()
-
-                $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
-            }
-            snacout()
+            downsidekey()
         }
     })
+
+
+    function leftsidekey(){
+    if ((queue.array[queue.rear]).side == "d") {
+        var snac3 = new Snac(((queue.array[queue.rear]).top + (queue.array[queue.rear]).height - b), (queue.array[queue.rear]).left - 3 / 2, b + 3 / 2, b, "l", 2)
+        queue.insert(snac3)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+
+    if ((queue.array[queue.rear]).side == "u") {
+        var snac3 = new Snac((queue.array[queue.rear]).top, (queue.array[queue.rear]).left - 3 / 2, b + 3 / 2, b, "l", 2)
+        queue.insert(snac3)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+    snacout()
+}
+
+
+
+
+    function upsidekey(){
+    if ((queue.array[queue.rear]).side == "l") {
+        var snac4 = new Snac((queue.array[queue.rear]).top - 3 / 2, (queue.array[queue.rear]).left, b, b + 3 / 2, "u", 2)
+        queue.insert(snac4)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+
+    if ((queue.array[queue.rear]).side == "r") {
+        var snac4 = new Snac((queue.array[queue.rear]).top - 3 / 2, ((queue.array[queue.rear]).left + (queue.array[queue.rear]).width - b), b, b + 3 / 2, "u", 2)
+        queue.insert(snac4)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+    snacout()
+}
+
+
+
+    function rightsidekey(){
+    if ((queue.array[queue.rear]).side == "u") {
+        var snac1 = new Snac((queue.array[queue.rear]).top, (queue.array[queue.rear]).left, b + 3 / 2, b, "r", 2)
+        queue.insert(snac1)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+
+    if ((queue.array[queue.rear]).side == "d") {
+        var snac1 = new Snac(((queue.array[queue.rear]).top + (queue.array[queue.rear].height - b)), (queue.array[queue.rear]).left, b + 3 / 2, b, "r", 2)
+        queue.insert(snac1)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: b + "vw", width: (b + 3 / 2) + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+    snacout()
+}
+  
+
+    function downsidekey(){
+    if ((queue.array[queue.rear]).side == "r") {
+        var snac2 = new Snac((queue.array[queue.rear]).top, ((queue.array[queue.rear]).left + (queue.array[queue.rear]).width - b), b, b + 3 / 2, "d", 2)
+        queue.insert(snac2)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+    if ((queue.array[queue.rear]).side == "l") {
+        var snac2 = new Snac((queue.array[queue.rear]).top, (queue.array[queue.rear]).left, b, b + 3 / 2, "d", 2)
+        queue.insert(snac2)
+
+        $('#main').append('<div class="snac"></div>')
+
+        sidechanges()
+
+        $('.snac').last().css({ height: (b + 3 / 2) + "vw", width: b + "vw", background: "blueviolet", top: (queue.array[queue.rear]).top + "vw", left: (queue.array[queue.rear]).left + "vw" })
+    }
+    snacout()
+}
 
 
 
@@ -1150,12 +1165,69 @@
 </script>
 
 <script>
-    function startfun(event){
-        $('#container').css({background: 'red'})
+    let x1
+    let y1
+    let x2
+    let y2
+    let dx
+    let dy
+
+    function startfun(event) {
+        $('#container').css({ background: 'white' })
+        x1 = event.touches[0].clientX;
+        y1 = event.touches[0].clientY;
     }
-    function endfun(event){
-        $('#container').css({background: 'blue'})
+    function endfun(event) {
+        $('#container').css({ background: 'black' })
+        x2 = event.touches[0].clientX;
+        y2 = event.touches[0].clientY;
+
+        dx = x2 - x1;
+        dy = y2 - y1;
+
+        if (dx < 0) { //left
+            if (dy < 0) { //up
+                if ((-dx) < (-dy)) { //side u
+                    upsidekey()
+                    $('#container').css({ background: 'green' })
+                } else { //side l
+                    leftsidekey()
+                    $('#container').css({ background: 'red' })
+                }
+            } else { //down
+                if ((-dx) < (dy)) { //side d
+                    downsidekey()
+                    $('#container').css({ background: 'yellow' })
+                } else { //side l
+                    leftsidekey()
+                    $('#container').css({ background: 'red' })
+                }
+            }
+
+
+        } else { //right
+            if (dy < 0) { //up
+                if ((dx) < (-dy)) { //side u
+                    upsidekey()
+                    $('#container').css({ background: 'green' })
+                } else { //side r
+                    rightsidekey()
+                    $('#container').css({ background: 'blue' })
+                }
+            } else { //down
+                if ((dx) < (dy)) { //side d
+                    downsidekey()
+                    $('#container').css({ background: 'yellow' })
+                } else { //side r
+                    rightsidekey()
+                    $('#container').css({ background: 'blue' })
+                }
+            }
+            
+        }
     }
+
+
 </script>
 
 </html>
