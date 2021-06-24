@@ -1,0 +1,138 @@
+* {
+    margin: 0vw;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    padding: 0;
+    margin: 0;
+}
+
+#body {
+    background: url(images/maya-pyramid-vector-illustration-ancient-mexico-stone-aztec-temple-green-jungle-landscape-liana-old-civilization-ruin-travel-220163925.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+#container {
+    position: relative;
+    width: 50vw;
+    height: 90vh;
+    border: .5vw solid rgb(255 180 61);
+    z-index: 10;
+    margin: 1.5vw auto;
+    padding: 0;
+    background-color: rgb(219, 255, 162);
+}
+
+#main {
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    margin: 0;
+    padding: 0;
+
+}
+
+.snac {
+    width: 20vw;
+    height: 3vw;
+    background-color: blueviolet;
+    position: absolute;
+    top: 0vw;
+    left: 0vw;
+    border-radius: 100vw;
+    z-index: 20;
+    
+}
+
+#box1 {
+    width: 20vw;
+    height: 3vw;
+    background-color: blueviolet;
+    position: absolute;
+    top: 9vw;
+    left: 0vw;
+    border-radius: 100vw;
+    z-index: 20;
+    
+}
+
+#box2 {
+    display: none;
+    width: 4vw;
+    height: 15vw;
+    background-color: rgb(226, 43, 67);
+    position: absolute;
+    top: 0vw;
+    left: 16vw;
+    border-radius: 100vw;
+}
+
+#box3 {
+    display: none;
+    width: 20vw;
+    height: 4vw;
+    background-color: rgb(80, 226, 43);
+    position: absolute;
+    top: 7vw;
+    left: 0vw;
+    border-radius: 100vw;
+}
+
+#put {
+    border: none;
+    outline: none;
+    color: white;
+}
+
+#ball {
+
+    width: 3vw;
+    height: 3vw;
+    background: red;
+    border-radius: 4vw;
+    position: absolute;
+    top: 0vw;
+    left: 0vw;
+
+}
+
+#score_borde {
+    background-color: white;
+    width: 20vw;
+    /* height: 10vw; */
+
+    position: absolute;
+    top: 2vw;
+    left: 78vw;
+}
+
+#score_borde li {
+    list-style: none;
+    padding: 1vw 2vw;
+    font-size: 2vw;
+}
+
+
+#score {
+
+    display: block;
+    font-size: 1.8vw;
+    padding: 1vw 2vw;
+}
