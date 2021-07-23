@@ -136,3 +136,13 @@ body {
     font-size: 1.8vw;
     padding: 1vw 2vw;
 }
+
+#game_over{
+    position: absolute;
+    top: 10vw;
+    left: 28vw;
+    z-index: 30;
+    /* width: 100vw; */
+    font-size: 9vw;
+    /* margin-left: 28vw;*/
+}
